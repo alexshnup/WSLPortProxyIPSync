@@ -12,7 +12,7 @@ $lines = $commandOutput -split "`n" | Select-Object -Skip 2
 # Initialize the array to store rules
 $rules = @()
 
-# Extract rules from the command output
+# Extract current rules from the command output
 foreach ($line in $lines) {
     $fields = $line -split "\s+"
     $listenAddress = $fields[0]
@@ -36,7 +36,7 @@ foreach ($line in $lines) {
 # Display the rules
 $rules
 
-# Execute portproxy command for each rule
+# Execute "netsh interface portproxy" command for each rule with new current address of WSL
 foreach ($rule in $rules) {
     # Build the command string
     $command = "netsh interface portproxy add v4tov4 listenport=$($rule.ListenPort) listenaddress=$($rule.ListenAddress) connectport=$($rule.ConnectPort) connectaddress=$($newConnectAddress)"
