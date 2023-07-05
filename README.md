@@ -37,15 +37,14 @@ Ensure that you have PowerShell installed on your Windows system.
 
 - Check added rules:
   ```
-  PS C:\Windows\system32> netsh interface portproxy show all
-
-Listen on ipv4:             Connect to ipv4:
-
-Address         Port        Address         Port
---------------- ----------  --------------- ----------
-0.0.0.0         80          1.2.3.4         80
-0.0.0.0         443         1.2.3.4   443
-```
+    PS C:\Windows\system32> netsh interface portproxy show all
+    Listen on ipv4:             Connect to ipv4:
+    
+    Address         Port        Address         Port
+    --------------- ----------  --------------- ----------
+    0.0.0.0         80          1.2.3.4         80
+    0.0.0.0         443         1.2.3.4   443
+  ```
 
 
 - Open a PowerShell terminal as an administrator. Right-click on the PowerShell icon and choose "Run as administrator" from the context menu.
@@ -63,15 +62,14 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 - Check added rules again:
   ```
-  PS C:\Windows\system32> netsh interface portproxy show all
-
-Listen on ipv4:             Connect to ipv4:
-
-Address         Port        Address         Port
---------------- ----------  --------------- ----------
-0.0.0.0         80          172.27.224.80   80
-0.0.0.0         443         172.27.224.80   443
-```
+    PS C:\Windows\system32> netsh interface portproxy show all
+    Listen on ipv4:             Connect to ipv4:
+    
+    Address         Port        Address         Port
+    --------------- ----------  --------------- ----------
+    0.0.0.0         80          172.27.224.80   80
+    0.0.0.0         443         172.27.224.80   443
+  ```
 
 Note: Running the script with administrative privileges is required to modify the port forwarding configuration using the "netsh" command.
 
