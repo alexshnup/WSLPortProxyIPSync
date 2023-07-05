@@ -29,6 +29,25 @@ Ensure that you have PowerShell installed on your Windows system.
 
 ## Usage
 
+- Add all needed portproxy rules with any target IP (for example 1.2.3.4)
+  ```
+   netsh interface portproxy add v4tov4 listenport=80 listenaddress=0.0.0.0 connectport=80 connectaddress=1.2.3.4
+   netsh interface portproxy add v4tov4 listenport=443 listenaddress=0.0.0.0 connectport=443 connectaddress=1.2.3.4
+  ```
+
+- Check added rules:
+  ```
+  PS C:\Windows\system32> netsh interface portproxy show all
+
+Listen on ipv4:             Connect to ipv4:
+
+Address         Port        Address         Port
+--------------- ----------  --------------- ----------
+0.0.0.0         80          1.2.3.4         80
+0.0.0.0         443         1.2.3.4   443
+```
+
+
 - Open a PowerShell terminal as an administrator. Right-click on the PowerShell icon and choose "Run as administrator" from the context menu.
 
 - Navigate to the directory where you cloned or downloaded the repository.
@@ -41,6 +60,18 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 ```
 
 - WSLPortProxyIPSync will automatically detect the IP address of the WSL environment and update the port forwarding rules using the "netsh interface portproxy" command in Windows accordingly.
+
+- Check added rules again:
+  ```
+  PS C:\Windows\system32> netsh interface portproxy show all
+
+Listen on ipv4:             Connect to ipv4:
+
+Address         Port        Address         Port
+--------------- ----------  --------------- ----------
+0.0.0.0         80          172.27.224.80   80
+0.0.0.0         443         172.27.224.80   443
+```
 
 Note: Running the script with administrative privileges is required to modify the port forwarding configuration using the "netsh" command.
 
