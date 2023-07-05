@@ -43,7 +43,7 @@ Ensure that you have PowerShell installed on your Windows system.
     Address         Port        Address         Port
     --------------- ----------  --------------- ----------
     0.0.0.0         80          1.2.3.4         80
-    0.0.0.0         443         1.2.3.4   443
+    0.0.0.0         443         1.2.3.4         443
   ```
 
 
