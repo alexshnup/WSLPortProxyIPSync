@@ -1,3 +1,12 @@
+# Project Overview
+This script addresses a problem faced when running applications within the Windows Subsystem for Linux (WSL) environment and making them available over the network from other machines.
+
+Typically, port forwarding is facilitated through the "netsh interface portproxy" command. However, an inherent issue arises because the WSL IP address changes after every system restart. Consequently, the existing port forwarding rules become invalid, rendering the services running inside the WSL inaccessible over the network. These rules are still tied to the previous WSL IP address, not the new one, necessitating a manual update of the address in each port forwarding rule.
+
+The purpose of this script is to automate this process. It automatically updates the target IP address in all existing port forwarding rules to match the current IP address of the WSL. This ensures that, irrespective of any changes in the WSL's IP address, the services running inside the WSL remain consistently available over the network. It effectively eliminates the need for manual intervention each time the system is restarted, enhancing usability and efficiency.
+
+You just need to add a script to the scheduler so that it starts automatically at startup
+
 # WSLPortProxyIPSync
 
 WSLPortProxyIPSync is a PowerShell script that helps synchronize the IP address of a Windows Subsystem for Linux (WSL) environment with the port forwarding configuration using the "netsh interface portproxy" command in Windows. It automates the process of updating the IP address in the port forwarding rules, ensuring that the forwarded ports always point to the correct WSL IP address even after system reboots.
